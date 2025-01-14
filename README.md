@@ -30,8 +30,8 @@ For this I've develop:
 Ath79
 
 ```bash
-git clone https://github.com/xchwarze/wifi-pineapple-cloner/
-cd wifi-pineapple-cloner/
+git clone https://github.com/koko004/wifi-pineapple-cloner-automated/
+cd wifi-pineapple-cloner-automated/
 wget https://www.wifipineapple.com/downloads/tetra/latest -O build/fw-base/basefw.bin
 wget -q https://github.com/xchwarze/wifi-pineapple-community/raw/main/firmwares/1.1.1-mk7.bin -O build/fw-base/basefw-mk7.bin
 chmod +x tools/*.sh
