@@ -122,8 +122,8 @@ prepare_build () {
         fi
 
         echo "  [+] Unpack firmware for get file system"
-        binwalk "$FW_FOLDER/basefw.bin" -e 
-        binwalk "$FW_FOLDER/_basefw.bin.extracted/sysupgrade-pineapple-tetra/root" -e --preserve-symlinks
+        binwalk "$FW_FOLDER/basefw.bin" -e -0 root 
+        binwalk "$FW_FOLDER/_basefw.bin.extracted/sysupgrade-pineapple-tetra/root" -e --preserve-symlinks -0 root
         mv "$FW_FOLDER/_basefw.bin.extracted/sysupgrade-pineapple-tetra/_root.extracted/squashfs-root/" "$BUILD_FOLDER/rootfs-base"
     else
         #echo "  [+] Downloading NANO firmware..."
@@ -135,7 +135,7 @@ prepare_build () {
         fi
 
         echo "  [+] Unpack firmware for get file system"
-        binwalk "$FW_FOLDER/basefw.bin" -e --preserve-symlinks
+        binwalk "$FW_FOLDER/basefw.bin" -e --preserve-symlinks -0 root
         mv "$FW_FOLDER/_basefw.bin.extracted/squashfs-root/" "$BUILD_FOLDER/rootfs-base"
     fi
 
@@ -159,7 +159,7 @@ prepare_build () {
         fi
 
         echo "  [+] Unpack mipsel firmware for get file system"
-        binwalk "$FW_FOLDER/basefw-mk7.bin" -e --preserve-symlinks
+        binwalk "$FW_FOLDER/basefw-mk7.bin" -e --preserve-symlinks -0 root
         mv "$FW_FOLDER/_basefw-mk7.bin.extracted/squashfs-root/" "$BUILD_FOLDER/rootfs-mk7-base"
 
         echo "  [+] Copying the original mipsel files"
