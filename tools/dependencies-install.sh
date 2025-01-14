@@ -51,11 +51,14 @@ install_ubuntu_deps () {
     echo "******************************"
 
     # install deps openwrt make and others
-    apt-get install build-essential python2 wget gawk libncurses5-dev libncursesw5-dev zip rename -y
+    apt-get install build-essential python2.7 wget gawk libncurses5-dev libncursesw5-dev zip rename -y
 
     # install binwalk
-    git clone https://github.com/ReFirmLabs/binwalk
-    cd binwalk && sudo python3 setup.py install && sudo ./deps.sh
+    #git clone https://github.com/ReFirmLabs/binwalk
+    apt install binwalk -y
+
+    # install xxd
+    apt install xxd php -y 
 
     echo ""
     echo "[*] Install script end!"
