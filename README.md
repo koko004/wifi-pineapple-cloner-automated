@@ -25,6 +25,23 @@ For this I've develop:
 ![Panel](assets/termidor-mipsel.png)
 
 
+## Automated
+
+Ath79
+
+```bash
+git clone https://github.com/xchwarze/wifi-pineapple-cloner/
+cd wifi-pineapple-cloner/
+wget https://www.wifipineapple.com/downloads/tetra/latest -O build/fw-base/basefw.bin
+wget -q https://github.com/xchwarze/wifi-pineapple-community/raw/main/firmwares/1.1.1-mk7.bin -O build/fw-base/basefw-mk7.bin
+chmod +x tools/*.sh
+tools/dependencies-install.sh openwrt-deps-mips
+sudo tools/dependencies-install.sh ubuntu-deps
+tools/builder.sh mips universal imagebuilder/19.07.7-ath79-generic glinet_gl-ar150 
+```
+
+<br>
+
 ## Builds
 
 You can find the complete steps to build this project in [this document](build.md). I have also added several important notes that will help you to try porting to other devices.
