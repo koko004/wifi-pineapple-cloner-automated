@@ -46,7 +46,7 @@ so my profile is `ubnt_acb-isp`. This is important for not flash incorrect firmw
 Build command:
 ```bash
 
-tools/builder.sh mips universal imagebuilder/19.07.7-ath79-generic 
+tools/builder.sh mips universal imagebuilder/19.07.7-ath79-generic ubnt_acb-isp
 ```
 
 <br>
