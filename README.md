@@ -11,16 +11,7 @@ So at the time of redoing this project I decided to rescue the original name fro
 
 ## About this project
 
-This project is the result of everything I've experienced from 2018 to 2022 to successfully port the NANO and TETRA in any hardware.<br>
-
-For this I've develop:
-* The method of patching the file system with the minimum to be able to work. For this I created the list of files to copy and the script that copies them.
-* A script to patch the file system to work on any hardware.
-* Completely updated [panel](https://github.com/xchwarze/wifi-pineapple-panel) with fixes and improvements.
-* Completely updated [packages repository](https://github.com/xchwarze/wifi-pineapple-community-packages) ([build](https://github.com/xchwarze/wifi-pineapple-community/tree/main/packages)).
-* New [module repository](https://github.com/xchwarze/wifi-pineapple-community/tree/main/modules).
-* And some new modules that are basic to use a device like this nowadays. New modules: [PMKIDAttack](https://github.com/xchwarze/wifi-pineapple-community/tree/main/modules/src/PMKIDAttack) and [Terminal](https://github.com/xchwarze/wifi-pineapple-community/tree/main/modules/src/Terminal)
-* I also carefully checked every dependency that was installed on the device in order to have more free space on the main partition.
+This project explain how to build project made by .<br>
 
 ![Panel](assets/termidor-mipsel.png)
 
@@ -31,13 +22,31 @@ Ath79
 
 ```bash
 git clone https://github.com/koko004/wifi-pineapple-cloner-automated/
+
 cd wifi-pineapple-cloner-automated/
+
 wget https://www.wifipineapple.com/downloads/tetra/latest -O build/fw-base/basefw.bin
+
 wget -q https://github.com/xchwarze/wifi-pineapple-community/raw/main/firmwares/1.1.1-mk7.bin -O build/fw-base/basefw-mk7.bin
+
 chmod +x tools/*.sh
+
 tools/dependencies-install.sh openwrt-deps-mips
+
 sudo tools/dependencies-install.sh ubuntu-deps
-tools/builder.sh mips universal imagebuilder/19.07.7-ath79-generic glinet_gl-ar150 
+```
+In this point if all works fine you need check what profile use, you can do this checking `imagebuilder` folder and then choosing your chip and file called `.profiles.mk`, in my case I need enter in `imagebuilder/19.07.7-ath79-generic`. <br>
+
+Then inside the file `.profiles.mk` you need find your model in my case Ubiquiti airCube ISP.<br>
+
+`DEVICE_ubnt_acb-isp_NAME:=Ubiquiti airCube ISP`<br>
+
+so my profile is `ubnt_acb-isp`. This is important for not flash incorrect firmware.
+
+Build command:
+```bash
+
+tools/builder.sh mips universal imagebuilder/19.07.7-ath79-generic 
 ```
 
 <br>
