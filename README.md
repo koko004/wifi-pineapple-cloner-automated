@@ -16,9 +16,7 @@ This project explain how to build project made by .<br>
 ![Panel](assets/termidor-mipsel.png)
 
 
-## Automated
-
-Ath79
+## Step by step
 
 ```bash
 git clone https://github.com/koko004/wifi-pineapple-cloner-automated/
@@ -50,6 +48,22 @@ tools/builder.sh mips universal imagebuilder/19.07.7-ath79-generic ubnt_acb-isp
 ```
 
 <br>
+
+## Issues
+You need flash the firmware when your hardware is in OpenWRT 19.07.07, in my case the factory image avaible for download was 21.02.0 so I need downgrade multiple times until the 19.07.07 version.
+
+When I flash every `sysupgrade` image and the I connect with ssh I cant and I need usig rsa like this 
+`ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa root@192.168.1.1`.
+
+Other issue is the lost of ui, you can solve installing `luci` and `luci-ssl` with this command `opkg update && opkg luci luci-ssl` and the adding to `/etc/config/firewall` at final of file with `nano` or `vi` command (if nano not installed `opkg install nano`)
+
+```
+config rule
+option src wan
+option dest_port 80
+option proto tcp
+option target ACCEPT
+```
 
 ## Builds
 
